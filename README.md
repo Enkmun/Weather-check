@@ -20,6 +20,10 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
+![Screenshot 2024-01-07 181620](https://github.com/Enkmun/Weather-check/assets/147563607/7cc6d92c-1554-4395-b37a-c9e75b8db582)
+
+![Screenshot 2024-01-07 181549](https://github.com/Enkmun/Weather-check/assets/147563607/f5eb3c11-9f50-46d4-9cfc-415d2b623110)
+
 ## Code
 HTML, CSS, JAVAscript
 
