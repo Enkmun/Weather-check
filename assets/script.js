@@ -1,4 +1,5 @@
 function initPage() {
+    // DOM Elements
     var inputEl = document.getElementById("city-input");
     var searchEl = document.getElementById("search-button");
     var clearEl = document.getElementById("clear-history");
@@ -9,16 +10,21 @@ function initPage() {
     var currentWindEl = document.getElementById("wind-speed");
     var currentUVEl = document.getElementById("UV-index");
     var historyEl = document.getElementById("history");
+     // Get search history from local storage or initialize an empty array
     var searchHistory = JSON.parse(localStorage.getItem("search")) || [];
     console.log(searchHistory);
 
     var APIKey = "d076c38c696bb02390bc09e58aeb897b";
+    // Function to fetch weather data for a city
 
     function getWeather(cityName) {
+        // API URL for current weather
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
+         // Fetch current weather data
         axios.get(queryURL)
             .then(function (response) {
                 console.log(response);
+                // Display current weather data
                 var currentDate = new Date(response.data.dt * 1000);
                 console.log(currentDate);
                 var day = currentDate.getDate();
@@ -31,6 +37,7 @@ function initPage() {
                 currentTempEl.innerHTML = "Temperature: " + k2f(response.data.main.temp) + " &#176F";
                 currentHumidityEl.innerHTML = "Humidity: " + response.data.main.humidity + "%";
                 currentWindEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
+                // Fetch UV index data
                 var lat = response.data.coord.lat;
                 var lon = response.data.coord.lon;
                 var UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
@@ -42,6 +49,7 @@ function initPage() {
                         currentUVEl.innerHTML = "UV Index: ";
                         currentUVEl.append(UVIndex);
                     });
+                // Fetch UV index data
                 var cityID = response.data.id;
                 var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
                 axios.get(forecastQueryURL)
@@ -73,6 +81,7 @@ function initPage() {
                     });
             });
     }
+     // Event listener for search button click
 
     searchEl.addEventListener("click", function () {
         var searchTerm = inputEl.value;
