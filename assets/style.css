@@ -5,12 +5,15 @@
 .search-header {
     font-size: 24px;
     font-weight: bold;
+    color: #007bff;
 }
 
 .city-name {
-    font-size: 30px;
+    font-size: 32px;
+    color: #007bff;
 }
 
 .forecast-date {
-    font-size: 18px;
+    font-size: 16px;
+    color: #333;
 }
